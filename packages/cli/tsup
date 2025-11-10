@@ -1,0 +1,14 @@
+
+CLI Building entry: src/index.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v7.2.0
+CLI Using tsup config: /Users/luancardoso/www/totvs/lib-react/journey-ui2/packages/cli/tsup.config.ts
+CLI Target: node18
+CLI Cleaning output folder
+CJS Build start
+DTS Build start
+CJS dist/index.js     257.22 KB
+CJS dist/index.js.map 951.13 KB
+CJS ⚡️ Build success in 568ms
+DTS ⚡️ Build success in 678ms
+DTS dist/index.d.ts clearluancardoso@Luans-MacBook-Pro cli % > @journey-ui/cli@0.0.1 build

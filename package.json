@@ -1,0 +1,25 @@
+{
+  "name": "@totvs/journey-ui",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "build:registry": "turbo run build:registry",
+    "publish:cli": "turbo run publish --filter=cli",
+    "docs:dev": "turbo run dev --filter=@journey-ui/docs",
+    "www:dev": "turbo run dev --filter=www",
+    "www:build": "turbo run build --filter=www"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "npm@10.9.2",
+  "dependencies": {}
+}

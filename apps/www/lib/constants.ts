@@ -1,0 +1,1 @@
+export const LIB_NAME = '@journey-ui/cli@latest'

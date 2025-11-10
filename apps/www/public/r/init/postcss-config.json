@@ -1,0 +1,11 @@
+{
+  "name": "postcss-config",
+  "type": "registry:init",
+  "files": [
+    {
+      "path": "postcss.config.mjs",
+      "type": "registry:init",
+      "content": "\"const config = {\\n  plugins: [\\\"@tailwindcss/postcss\\\"],\\n};\\n\\nexport default config;\\n\""
+    }
+  ]
+}

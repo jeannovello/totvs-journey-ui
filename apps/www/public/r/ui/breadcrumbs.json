@@ -1,0 +1,17 @@
+{
+  "name": "breadcrumbs",
+  "type": "registry:ui",
+  "dependencies": [
+    "@untitled-ui/icons-react"
+  ],
+  "registryDependencies": [
+    "typography"
+  ],
+  "files": [
+    {
+      "path": "ui/breadcrumbs.tsx",
+      "type": "registry:ui",
+      "content": "\"import Link from \\\"next/link\\\";\\nimport { ChevronRight } from \\\"@untitled-ui/icons-react\\\";\\nimport { Typography } from \\\"./typography\\\";\\n\\nexport interface BreadcrumbItem {\\n  label: string;\\n  path?: string;\\n}\\n\\nexport interface BreadcrumbsProps {\\n  breadcrumbs: BreadcrumbItem[];\\n}\\n\\nfunction Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {\\n  return (\\n    <nav aria-label=\\\"Breadcrumb\\\" className=\\\"flex items-center text-base font-normal text-grey-4 space-x-1\\\">\\n      {breadcrumbs.map(({ label, path }, index) => {\\n        const isLast = index === breadcrumbs.length - 1;\\n\\n        return (\\n          <div key={index} className=\\\"flex items-center space-x-1\\\">\\n            {index > 0 && (\\n              <ChevronRight\\n                height={16}\\n                aria-label=\\\"Separador de breadcrumb\\\"\\n                className=\\\"text-status-info\\\"\\n              />\\n            )}\\n\\n            {isLast ? (\\n              <Typography className=\\\"grey-5 font-semibold\\\">{label}</Typography>\\n            ) : path ? (\\n              <Link href={path}>\\n                <Typography className=\\\"grey-4 hover:text-primary/90\\\">{label}</Typography>\\n              </Link>\\n            ) : (\\n              <Typography className=\\\"grey-4\\\">{label}</Typography>\\n            )}\\n          </div>\\n        );\\n      })}\\n    </nav>\\n  );\\n}\\n\\nexport { Breadcrumbs };\""
+    }
+  ]
+}

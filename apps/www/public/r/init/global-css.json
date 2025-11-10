@@ -1,0 +1,11 @@
+{
+  "name": "global-css",
+  "type": "registry:init",
+  "files": [
+    {
+      "path": "globals.css",
+      "type": "registry:init",
+      "content": "\"@import \\\"tailwindcss\\\";\\n\\n@theme {\\n  /* Font-family */\\n  --font-*: initial;\\n  --font-sans: Nunito Sans, sans-serif;\\n\\n  /* Spacing */\\n  --radius: 0.5rem;\\n\\n  /* Colors */\\n  --color-primary: #0897E9;\\n  --color-primary-1: #E6F5FD;\\n  --color-primary-2: #6BC1F2;\\n  --color-primary-3: #055B8C;\\n  --color-primary-4: #02304A;\\n\\n  --color-secondary: ##FEAC0E;\\n  --color-secondary-1: #FFF7E7;\\n  --color-secondary-2: #FFE6B7;\\n  --color-secondary-3: #FECD6E;\\n  --color-secondary-4: #FEBD3E;\\n  --color-secondary-5: #CB8A0B;\\n  --color-secondary-6: #4C3404;\\n\\n  --color-complementary: #6B48FF;\\n  --color-complementary-1: #F0EDFF;\\n  --color-complementary-2: #D3C8FF;\\n  --color-complementary-3: #896DFF;\\n  --color-complementary-4: #563ACC;\\n  --color-complementary-5: #2B1D66;\\n  --color-complementary-6: #150E33;\\n\\n  --color-grey: #363636;\\n  --color-grey-1: #FAFAFA;\\n  --color-grey-2: #EEEEEE;\\n  --color-grey-3: #D2D2D2;\\n  --color-grey-4: #5E5E5E;\\n  --color-grey-5: #363636;\\n  --color-grey-6: #000000;\\n\\n  --status-warning: #BF0F30;\\n  --status-warning-light: #FEE6E8;\\n\\n  --status-success: #007332;\\n  --status-success-light: #EDF8EC;\\n\\n  --status-info: #0897E9;\\n  --status-info-light: #E6F5FD;\\n\\n  --status-alert: #E07817;\\n  --status-alert-light: #FEF4EA;\\n}\\n\""
+    }
+  ]
+}
