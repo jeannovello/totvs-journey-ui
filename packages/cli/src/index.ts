@@ -2,6 +2,7 @@
 
 import { Command } from 'commander'
 import { add } from './commands/add.js'
+import { init } from './commands/init.js'
 
 process.on('SIGINT', () => process.exit(0))
 process.on('SIGTERM', () => process.exit(0))
@@ -11,6 +12,7 @@ async function main() {
     .name('totvs-journey-ui')
     .description('Add TOTVS Journey UI components to your project')
 
+  program.addCommand(init)  
   program.addCommand(add)
 
   program.parse()

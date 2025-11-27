@@ -1,5 +1,5 @@
 {
-  "name": "@totvs/journey-ui",
+  "name": "totvs-journey-ui",
   "private": true,
   "workspaces": [
     "packages/*",

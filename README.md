@@ -14,19 +14,19 @@
 
 ```bash
 # Instalação global (opcional)
-npm install -g @totvs/journey-ui
+npm install -g totvs-journey-ui
 
 # Agora você pode usar:
 totvs-journey-ui add button
 
 # Adicionar componentes específicos
-npx @totvs/journey-ui@latest add button
-npx @totvs/journey-ui@latest add card
-npx @totvs/journey-ui@latest add form
+npx totvs-journey-ui@latest add button
+npx totvs-journey-ui@latest add card
+npx totvs-journey-ui@latest add form
 ```
 
 # Links
 
-- npm: https://www.npmjs.com/package/@totvs/journey-ui
-- github: https://github.com//jeannovello/totvs-journey-ui
+- npm: https://www.npmjs.com/package/totvs-journey-ui
+- github: https://github.com/jeannovello/totvs-journey-ui
 - guia de estilos do journey-ui: https://www.figma.com/design/cwJTav9XGFmfxVAHpf8eb8/JOURNEY---STYLE-GUIDE

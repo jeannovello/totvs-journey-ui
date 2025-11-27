@@ -1,47 +1,103 @@
-// import { installComponents } from '../utils/component-installer'
-// import { logger } from '../utils/logger'
-// import { highlighter } from '../utils/highlighter'
-// import { z } from 'zod'
+import { Command } from "commander"
+import fs from "fs-extra"
+import path from "path"
+import { spinner } from "../utils/spinner"
+import { logger } from "../utils/logger"
 
-// export const initOptionsSchema = z.object({
-//   cwd: z.string(),
-//   components: z.array(z.string()).optional(),
-//   yes: z.boolean(),
-//   defaults: z.boolean(),
-//   force: z.boolean(),
-//   silent: z.boolean(),
-//   isNewProject: z.boolean(),
-//   srcDir: z.boolean().optional(),
-// })
+export const init = new Command()
+  .name("init")
+  .description("Inicializa o projeto para usar o Journey UI")
+  .option("-y, --yes", "Usa as configurações padrão", false)
+  .option("-c, --cwd <cwd>", "Diretório alvo", process.cwd())
+  .action(async (opts) => {
+    const cwd = path.resolve(opts.cwd)
 
-// export async function init(options: z.infer<typeof initOptionsSchema>) {
-//   logger.info('')
-//   logger.info(`${highlighter.info('Journey UI')} initialization started...`)
-//   logger.info('')
+    try {
+      logger.info("")
+      logger.info("🔧 Iniciando configuração do Journey UI...")
+      logger.info("")
 
-//   // 2. Instalar componentes essenciais
-//   const essentialComponents = ['postcss-config', 'global-css', 'utils']
-  
-//   try {
-//     await installComponents({
-//       cwd: options.cwd,
-//       components: essentialComponents,
-//       force: options.force,
-//       silent: options.silent
-//     })
+      // --- 1) Criar journey-ui.json ----------------------------------------
+      const configPath = path.join(cwd, "journey-ui.json")
 
-//     logger.info('')
-//     logger.success('✅ Journey UI initialized successfully!')
-//     logger.info('')
-//     logger.info(`${highlighter.info('Next steps:')}`)
-//     logger.info('  1. Run "npx journey-ui add button" to add your first component')
-//     logger.info('  2. Import and use components in your code')
-//     logger.info('  3. Customize the utils and theme as needed')
-//     logger.info('')
+      const defaultConfig = {
+        isSrcDir: true,
+        rsc: false,
+        tailwind: {
+          css: "./src/styles/journey.css",
+          config: "tailwind.config.js"
+        },
+        aliases: {
+          ui: "@/components/ui",
+          utils: "@/lib/utils",
+          lib: "@/lib",
+          blocks: "@/components/blocks"
+        }
+      }
 
-//   } catch (error) {
-//     logger.error('Initialization failed')
-//     logger.error(error instanceof Error ? error.message : 'Unknown error')
-//     process.exit(1)
-//   }
-// }
+      const step1 = spinner("Criando journey-ui.json...")
+      await fs.writeFile(configPath, JSON.stringify(defaultConfig, null, 2))
+      step1.succeed("journey-ui.json criado ✅")
+
+      // --- 2) Criar pastas --------------------------------------------------
+      const step2 = spinner("Criando estrutura de pastas...")
+      await fs.ensureDir(path.join(cwd, "src/components/ui"))
+      await fs.ensureDir(path.join(cwd, "src/components/blocks"))
+      await fs.ensureDir(path.join(cwd, "src/lib"))
+      await fs.ensureDir(path.join(cwd, "src/styles"))
+      step2.succeed("Pastas criadas ✅")
+
+      // --- 3) Criar arquivo base de CSS ------------------------------------
+      const cssPath = path.join(cwd, "src/styles/journey.css")
+      const cssContent = `
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+`
+
+      const step3 = spinner("Criando arquivo base de CSS...")
+      if (!fs.existsSync(cssPath)) {
+        await fs.writeFile(cssPath, cssContent)
+      }
+      step3.succeed("Arquivo journey.css criado ✅")
+
+      // --- 4) Configurar Tailwind ------------------------------------------
+      const tailwindConfigPath = path.join(cwd, "tailwind.config.js")
+      const tailwindConfigContent = `
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{ts,tsx,js,jsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+`
+
+      const step4 = spinner("Configurando Tailwind...")
+      if (!fs.existsSync(tailwindConfigPath)) {
+        await fs.writeFile(tailwindConfigPath, tailwindConfigContent)
+      }
+      step4.succeed("Tailwind configurado ✅")
+
+      // --- 5) Finalização ---------------------------------------------------
+      logger.success("")
+      logger.success("🎉 Journey UI foi inicializado com sucesso!")
+      logger.info("")
+      logger.info("Agora você pode instalar componentes:")
+      logger.info(`  npx totvs-journey-ui add button`)
+      logger.info("")
+      logger.info("Ou explorar outros comandos:")
+      logger.info(`  totvs-journey-ui --help`)
+      logger.info("")
+
+    } catch (error) {
+      logger.error("")
+      logger.error("❌ Falha ao inicializar o Journey UI")
+      logger.error(error instanceof Error ? error.message : "Erro desconhecido")
+      logger.error("")
+      process.exit(1)
+    }
+  })

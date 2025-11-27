@@ -1,5 +1,5 @@
 {
-  "name": "@totvs/journey-ui",
+  "name": "totvs-journey-ui",
   "version": "0.0.8",
   "description": "CLI for adding Journey UI components to your project",
   "type": "commonjs",
