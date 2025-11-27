@@ -1,0 +1,17 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-checkbox"
+  ],
+  "registryDependencies": [
+    "typography"
+  ],
+  "files": [
+    {
+      "path": "ui/checkbox.tsx",
+      "type": "registry:ui",
+      "content": "\"\\\"use client\\\"\\n\\nimport * as React from \\\"react\\\"\\nimport * as CheckboxPrimitive from \\\"@radix-ui/react-checkbox\\\"\\n\\nimport { cn } from \\\"@/registry/lib/utils\\\"\\nimport { Typography } from \\\"@/registry/ui/typography\\\"\\nimport { cva, type VariantProps } from \\\"class-variance-authority\\\"\\n\\nconst checkboxVariants = cva(\\n  \\\"rounded-[4px] border-2 border-grey-5 bg-white data-[state=checked]:bg-primary data-[state=checked]:text-primary-white\\\",\\n  {\\n    variants: {\\n      size: {\\n        base: 'size-6',\\n        sm: 'size-5',\\n      },\\n    },\\n    defaultVariants: {\\n      size: 'base',\\n    },\\n  }\\n)\\n\\nexport interface CheckboxProps extends React.ComponentProps<typeof CheckboxPrimitive.Root>, VariantProps<typeof checkboxVariants> {\\n  label?: string\\n}\\n\\nfunction Checkbox({\\n  className,\\n  size,\\n  label,\\n  ...props\\n}: CheckboxProps) {\\n  return (\\n    <label className=\\\"w-min [&>*]:cursor-pointer whitespace-nowrap flex items-center gap-2\\\">\\n      <CheckboxPrimitive.Root\\n        data-slot=\\\"checkbox\\\"\\n        className={cn(\\n          checkboxVariants({ size }),\\n          \\\"hover:ring-2 hover:ring-primary-2\\\",\\n          className\\n        )}\\n        {...props}\\n      >\\n        <CheckboxPrimitive.Indicator\\n          data-slot=\\\"checkbox-indicator\\\"\\n          className=\\\"flex items-center justify-center text-current transition-none\\\"\\n        >\\n          <svg width=\\\"16\\\" height=\\\"16\\\" viewBox=\\\"0 0 16 16\\\" fill=\\\"none\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\">\\n            <path d=\\\"M2 8.82608L6.55114 13L14 5.60491L12.3864 4L6.55114 9.80151L3.60227 6.99433L2 8.82608Z\\\" fill=\\\"white\\\" />\\n          </svg>\\n\\n        </CheckboxPrimitive.Indicator>\\n      </CheckboxPrimitive.Root>\\n      {!!label && (<Typography variant=\\\"p2\\\">{label}</Typography>)}\\n    </label>\\n  )\\n}\\n\\nexport { Checkbox, checkboxVariants }\\n\""
+    }
+  ]
+}

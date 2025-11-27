@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
 import "./globals.css";
+
+import type { Metadata } from "next";
+import { Nunito_Sans } from 'next/font/google'
+
 import { DocumentationHeader } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
 
@@ -8,13 +11,18 @@ export const metadata: Metadata = {
   description: "",
 };
 
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800', '900'],
+})
+
 export default function RootLayout({
   children,
 }: {
   readonly children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br" suppressHydrationWarning>
+    <html lang="pt-br" className={nunitoSans.className} suppressHydrationWarning>
       <body className="min-h-screen">
         <DocumentationHeader />
         <main className="h-[calc(100vh-theme(spacing.16))]">

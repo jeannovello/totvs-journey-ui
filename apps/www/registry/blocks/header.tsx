@@ -15,7 +15,7 @@ export interface HeaderProps {
 
 const Header = ({ title, breadcrumbs, description, rightImagePath }: HeaderProps) => {
   return (
-    <div className={cn("relative bg-grey-2 overflow-hidden pl-18 h-[200px]")}>
+    <div className={cn("relative bg-grey-3 overflow-hidden pl-18 h-[200px]")}>
       {rightImagePath && (
         <div
           className={cn(
@@ -48,7 +48,7 @@ const Header = ({ title, breadcrumbs, description, rightImagePath }: HeaderProps
           </Typography>
           
           {description && (
-            <Typography as="p" variant="s2" className="text-sm leading-none font-semibold text-grey-4">
+            <Typography as="p" variant="s2" className="text-sm leading-none font-semibold text-grey-5">
               {description}
             </Typography>
           )}

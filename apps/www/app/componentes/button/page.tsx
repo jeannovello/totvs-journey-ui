@@ -131,13 +131,13 @@ export function ExemploBasico() {
             <div className="space-y-4">
               <div className="p-4 bg-slate-50 rounded-lg border">
                 <div className="flex items-center gap-4 mb-3">
-                  <Button size="xsmall">Extra Small</Button>
                   <Button size="small">Small</Button>
+                  <Button size="medium">Medium</Button>
                   <Button size="regular">Regular</Button>
                 </div>
                 <div className="flex gap-2 text-sm">
-                  <InlineCode>size="xsmall"</InlineCode>
                   <InlineCode>size="small"</InlineCode>
+                  <InlineCode>size="medium"</InlineCode>
                   <InlineCode>size="regular"</InlineCode>
                 </div>
               </div>
@@ -205,11 +205,26 @@ import { Button } from "@/components/ui/button"
             <Typography variant="h3" className="mb-4">
               Apenas ícone
             </Typography>
-            <div className="p-6 bg-slate-50 rounded-lg border mb-4">
+            <div className="p-6 bg-slate-50 rounded-lg border mb-4 space-y-4">
               <div className="flex gap-4 flex-wrap items-center">
-                <Button iconOnly={<Plus />} size="regular" />
+                <Button iconOnly={<Plus />} />
+                <Button iconOnly={<Heart />} variant="secondary" />
+                <Button iconOnly={<Trash2 />} variant="tertiary" />
+              </div>
+              <div className="flex gap-4 flex-wrap items-center">
+                <Button iconOnly={<Plus />} size="medium" />
+                <Button iconOnly={<Heart />} variant="secondary" size="medium" />
+                <Button iconOnly={<Trash2 />} variant="tertiary" size="medium" />
+              </div>
+              <div className="flex gap-4 flex-wrap items-center">
+                <Button iconOnly={<Plus />} size="small" />
                 <Button iconOnly={<Heart />} variant="secondary" size="small" />
-                <Button iconOnly={<Trash2 />} variant="tertiary" size="xsmall" />
+                <Button iconOnly={<Trash2 />} variant="tertiary" size="small" />
+              </div>
+              <div className="flex gap-4 flex-wrap items-center">
+                <Button iconOnly={<Plus />} size="icon-line" />
+                <Button iconOnly={<Heart />} variant="secondary" size="icon-line" />
+                <Button iconOnly={<Trash2 />} variant="tertiary" size="icon-line" />
               </div>
             </div>
             
@@ -218,8 +233,8 @@ import { Button } from "@/components/ui/button"
 import { Button } from "@/components/ui/button"
 
 <Button iconOnly={<Plus />} size="regular" />
-<Button iconOnly={<Heart />} variant="secondary" size="small" />
-<Button iconOnly={<Trash2 />} variant="tertiary" size="xsmall" />`}
+<Button iconOnly={<Heart />} variant="secondary" size="medium" />
+<Button iconOnly={<Trash2 />} variant="tertiary" size="small" />`}
             </CodeBlock>
           </div>
         </div>
@@ -360,7 +375,7 @@ export function BotaoComoLink() {
                   <InlineCode>size</InlineCode>
                 </td>
                 <td className="border border-slate-200 px-4 py-3">
-                  <Typography variant="p2">"regular" | "small" | "xsmall"</Typography>
+                  <Typography variant="p2">"regular" | "medium" | "small"</Typography>
                 </td>
                 <td className="border border-slate-200 px-4 py-3">
                   <Typography variant="p2">"regular"</Typography>
@@ -473,18 +488,18 @@ export function BotaoComoLink() {
             <div className="p-6 bg-slate-50 rounded-lg border mb-4">
               <div className="space-y-4">
                 <div className="flex gap-4 flex-wrap items-center">
-                  <Button size="xsmall">XSmall</Button>
                   <Button size="small">Small</Button>
+                  <Button size="medium">Medium</Button>
                   <Button size="regular">Regular</Button>
                 </div>
                 <div className="flex gap-4 flex-wrap items-center">
-                  <Button variant="secondary" size="xsmall">XSmall</Button>
                   <Button variant="secondary" size="small">Small</Button>
+                  <Button variant="secondary" size="medium">Medium</Button>
                   <Button variant="secondary" size="regular">Regular</Button>
                 </div>
                 <div className="flex gap-4 flex-wrap items-center">
-                  <Button variant="tertiary" size="xsmall">XSmall</Button>
                   <Button variant="tertiary" size="small">Small</Button>
+                  <Button variant="tertiary" size="medium">Medium</Button>
                   <Button variant="tertiary" size="regular">Regular</Button>
                 </div>
               </div>
@@ -492,18 +507,18 @@ export function BotaoComoLink() {
             
             <CodeBlock language="tsx" filename="tamanhos-variantes.tsx">
 {`// Primary em todos os tamanhos
-<Button size="xsmall">XSmall</Button>
 <Button size="small">Small</Button>
+<Button size="medium">Medium</Button>
 <Button size="regular">Regular</Button>
 
 // Secondary em todos os tamanhos
-<Button variant="secondary" size="xsmall">XSmall</Button>
 <Button variant="secondary" size="small">Small</Button>
+<Button variant="secondary" size="medium">Medium</Button>
 <Button variant="secondary" size="regular">Regular</Button>
 
 // Tertiary em todos os tamanhos
-<Button variant="tertiary" size="xsmall">XSmall</Button>
 <Button variant="tertiary" size="small">Small</Button>
+<Button variant="tertiary" size="medium">Medium</Button>
 <Button variant="tertiary" size="regular">Regular</Button>`}
             </CodeBlock>
           </div>

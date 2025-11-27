@@ -193,7 +193,7 @@ export function CodeBlock({
               background: "#ffffff",
               fontSize: "0.875rem",
               lineHeight: "1.5"
-            }}ß
+            }}
           >
             {displayCode}
           </SyntaxHighlighter>

@@ -1,30 +1,50 @@
-import fs from 'fs'
-import path from 'path'
-import { CodeBlock } from './code-block'
+"use client";
+
+import { useEffect, useState } from "react";
+import { CodeBlock } from "./code-block";
 
 interface SourceCodeDisplayProps {
-  filePath: string
-  title?: string
-  language?: string
+  readonly filePath: string;
+  readonly title?: string;
+  readonly language?: string;
 }
 
-export async function SourceCodeDisplay({ 
+export function SourceCodeDisplay({ 
   filePath, 
   title, 
-  language = 'tsx' 
+  language = "tsx" 
 }: SourceCodeDisplayProps) {
-  let sourceCode: string
-  
-  try {
-    const fullPath = path.join(process.cwd(), filePath)
-    sourceCode = await fs.promises.readFile(fullPath, 'utf-8')
-  } catch (error) {
-    sourceCode = `// Erro ao carregar arquivo: ${filePath}`
-  }
+  const [sourceCode, setSourceCode] = useState<string>("Carregando...");
+
+  useEffect(() => {
+    const fetchSourceCode = async () => {
+      try {
+        const response = await fetch(`/api/source-code?filePath=${encodeURIComponent(filePath)}`);
+        const data = await response.json();
+        
+        if (response.ok) {
+          setSourceCode(data.code);
+        } else {
+          setSourceCode(data.code || `// Erro ao carregar arquivo: ${filePath}\n// ${data.error}`);
+        }
+      } catch {
+        setSourceCode(`// Erro ao carregar arquivo: ${filePath}\n// Verifique sua conexão e tente novamente.`);
+      }
+    };
+
+    fetchSourceCode();
+  }, [filePath]);
+
+  const fileName = filePath.split('/').pop() || filePath;
 
   return (
-    <CodeBlock expandable={10} language={language} title={title || path.basename(filePath)} showLineNumbers>
+    <CodeBlock 
+      expandable={10} 
+      language={language} 
+      title={title || fileName} 
+      showLineNumbers
+    >
       {sourceCode}
     </CodeBlock>
-  )
+  );
 }

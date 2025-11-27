@@ -10,7 +10,7 @@ const typographyVariants = cva(
     variants: {
       variant: {
         // Display
-        d1: "text-[64px] leading-auto font-black",
+        d1: "text-[64px] leading-[72px] font-black",
         d2: "text-[48px] leading-[56px] font-black",
         
         // Headline
@@ -23,19 +23,25 @@ const typographyVariants = cva(
         t2: "text-[18px] leading-[22px] font-extrabold",
         
         // Subtitle
-        s1: "text-[20px] leading-[28px] font-extrabold",
-        s2: "text-[18px] leading-[26px] font-extrabold",
+        s1: "text-[20px] leading-[28px] font-semibold",
+        s2: "text-[18px] leading-[26px] font-semibold",
+        s3: "text-[16px] leading-auto font-semibold",
+        s4: "text-[14px] leading-auto font-semibold",
+        s5: "text-[12px] leading-[20px] font-semibold",
         
         // Paragraph
         p1: "text-[16px] leading-[24px] font-normal",
         p1b: "text-[16px] leading-[24px] font-bold",
+        p1bb: "text-[16px] leading-[24px] font-black",
         p2: "text-[14px] leading-[22px] font-normal",
         p2b: "text-[14px] leading-[22px] font-bold",
+        p2bb: "text-[14px] leading-[22px] font-black",
         p3: "text-[12px] leading-[20px] font-normal",
         p3b: "text-[12px] leading-[20px] font-bold",
+        p3bb: "text-[12px] leading-[20px] font-black",
         
         // Caption
-        c1: "text-[10px] leading-[18px] font-normal",
+        c1: "text-[10px] leading-auto font-semibold",
       },
     },
     defaultVariants: {
@@ -54,6 +60,9 @@ const defaultElements: Record<string, keyof React.JSX.IntrinsicElements> = {
   t2: "h5",
   s1: "h6",
   s2: "h6",
+  s3: "h6",
+  s4: "h6",
+  s5: "h6",
   p1: "p",
   p1b: "p",
   p2: "p",

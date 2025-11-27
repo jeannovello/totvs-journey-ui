@@ -60,4 +60,62 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dropdown",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-select", "@untitled-ui/icons-react"],
+    registryDependencies: ["typography"],
+    files: [
+      {
+        path: "ui/dropdown.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "dropdown-menu",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-dropdown-menu", "lucide-react"],
+    files: [
+      {
+        path: "ui/dropdown-menu.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+    {
+    name: "file-uploader",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["typography"],
+    files: [
+      {
+        path: "ui/file-uploader.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "checkbox",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-checkbox"],
+    registryDependencies: ["typography"],
+    files: [
+      {
+        path: "ui/checkbox.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "dialog",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-dialog", "lucide-react"],
+    files: [
+      {
+        path: "ui/dialog.tsx",
+        type: "registry:ui",
+      },
+    ],
+  } 
 ]

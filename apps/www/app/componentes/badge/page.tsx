@@ -41,24 +41,67 @@ export default function BadgePage() {
         </div>
       </section>
 
-      {/* Uso básico */}
+      {/* Exemplos de uso */}
       <section className="mb-12">
         <Typography variant="h2" className="mb-6">
-          Uso básico
+          Exemplos de uso
         </Typography>
-        <Typography variant="p1" className="mb-4">
-          Importe o componente e utilize passando classes CSS para controlar as cores e estilos:
-        </Typography>
-        <div className="flex gap-4 flex-wrap">
-          <Badge variant="success">Success</Badge>
-          <Badge variant="warning">Warning</Badge>
-          <Badge variant="alert">Alert</Badge>
-          <Badge variant="info">Info</Badge>
-          <Badge className="bg-purple-300 text-black">Outra cor</Badge>
-          <Badge>
-            Com icone
-            <InfoIcon className="size-4" />
-          </Badge>
+
+        <div className="space-y-4">
+          <Typography variant="h3" className="mb-4">
+            Badge - variant
+          </Typography>
+
+          <CodeBlock language="tsx" filename="page.tsx">
+            {`<div className="flex gap-4 flex-wrap">
+  <Badge variant="negative">Negative</Badge>
+  <Badge variant="positive">Positive</Badge>
+  <Badge variant="warning">Warning</Badge>
+  <Badge variant="info">Info</Badge>
+  <Badge variant="pending">Pending</Badge>
+  <Badge variant="other">Other</Badge>
+  <Badge className="bg-emerald-300">Outra cor</Badge>
+  <Badge>
+    Com icone
+    <InfoIcon />
+  </Badge>
+</div>`}
+          </CodeBlock>
+          <div className="flex gap-4 flex-wrap">
+            <Badge variant="negative">Negative</Badge>
+            <Badge variant="positive">Positive</Badge>
+            <Badge variant="warning">Warning</Badge>
+            <Badge variant="info">Info</Badge>
+            <Badge variant="pending">Pending</Badge>
+            <Badge variant="other">Other</Badge>
+            <Badge>
+              Com icone
+              <InfoIcon />
+            </Badge>
+            <Badge className="bg-emerald-300">Outra cor</Badge>
+          </div>
+        </div>
+
+        <div className="mt-6 space-y-4">
+          <Typography variant="h3" className="mb-4">
+            Badge - size
+          </Typography>
+
+          <CodeBlock language="tsx" filename="page.tsx">
+          {`<div className="flex gap-4 flex-wrap">
+  <Badge size="small">Small</Badge>
+  <Badge size="medium">Medium</Badge>
+  <Badge>
+    Com icone
+    <InfoIcon />
+  </Badge>
+</div>`}
+        </CodeBlock>
+
+          <div className="flex gap-4 flex-wrap">
+            <Badge size="small">Small</Badge>
+            <Badge size="medium">Medium</Badge>
+          </div>
         </div>
       </section>
 
@@ -83,6 +126,12 @@ export default function BadgePage() {
                 <td className="border border-slate-200 px-4 py-3"><code>string</code></td>
                 <td className="border border-slate-200 px-4 py-3"><InlineCode>info</InlineCode></td>
                 <td className="border border-slate-200 px-4 py-3">Cor do badge.</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 px-4 py-3"><InlineCode>size</InlineCode></td>
+                <td className="border border-slate-200 px-4 py-3"><code>string</code></td>
+                <td className="border border-slate-200 px-4 py-3"><InlineCode>medium</InlineCode></td>
+                <td className="border border-slate-200 px-4 py-3">Tamanho do badge.</td>
               </tr>
             </tbody>
           </table>

@@ -16,13 +16,8 @@ export interface JourneyUiConfig {
   }
 }
 
-export async function getJourneyUiConfig(cwd: string): Promise<JourneyUiConfig | null> {
+export async function getJourneyUiConfig(cwd: string): Promise<JourneyUiConfig> {
   const configPath = path.join(cwd, 'journey-ui.json')
-
-  try {
-    const config = await fs.readFile(configPath, 'utf8')
-    return JSON.parse(config)
-  } catch {
-    return null
-  }
+  const config = await fs.readFile(configPath, 'utf8')
+  return JSON.parse(config)
 }
